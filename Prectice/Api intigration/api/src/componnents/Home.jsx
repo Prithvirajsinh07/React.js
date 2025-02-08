@@ -1,48 +1,30 @@
-import axios from 'axios';
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [data , setData] = useState({
-    productName : "",
-    category : "" ,
-    price : ""
-  });
-
-  function handleSubmite (e) {
-    e.preventDefault();
-    console.log(data);
-    setData({
-      productName: "",
-      category: "",
-      price: "",
-    });
-createData();
-alert("you product add successfully")
-  }
-  async function createData() {
-    axios.post("http://localhost:5000/product" , data);
-  }
   return (
     <div>
-      <form onSubmit={handleSubmite} action="">
-      <label  htmlFor="">Name :-</label>
-        <input
-        value={data.productName}
-         onChange={(e)=> {
-setData({...data , productName : e.target.value})
-        }} type="text" /><br /><br />
-        <label htmlFor="">Brand :-</label>
-        <input   value={data.category} onChange={(e)=> {
-setData({...data , category : e.target.value})
-        }}  type="text" /><br /><br />
-        <label htmlFor="">Price :-</label>
-        <input   value={data.price} onChange={(e)=> {
-setData({...data , price : e.target.value})
-        }}  type="number" /><br /><br />
-        <button>Submit</button>
-      </form>
+      <Link to="/data"><button>Create Data</button></Link><br /><br /><br />
+      <table border={""}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
 
-export default Home
+export default Home;
