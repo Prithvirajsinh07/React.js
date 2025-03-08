@@ -1,0 +1,23 @@
+.name{
+  display: block;
+  margin:  0px 0px 20px 0px;
+ color: red;
+}
+.submit{
+  display: block;
+  margin-top: 20px;
+}
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: gold;
+
+  border: 1px solid red;
+}
+.sign-container{
+  margin: auto;
+}
+.form{
+  margin: auto;
+}
