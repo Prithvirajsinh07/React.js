@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCard } from "../Redux/feature/ProductSlice";
+import { AddCart, fetchCard } from "../Redux/feature/ProductSlice";
 
 const ProductCard = () => {
+  const [dataId , setDataId] = useState();
   const dispatch = useDispatch();
-  const cardData = useSelector((state) => state.product.cart) 
+  const cardData = useSelector((state) => state.product.cart);
+  const addCartData = useSelector((state) => state.product.AddCart);
+  console.log(dataId);
+  console.log(addCartData);
   
-  function handleData() {
-    
+  
+  
+  function handleData(e) {
+  setDataId(e.id);
+  dispatch(AddCart(dataId))
   }
   
   useEffect(()=> {
@@ -90,7 +97,7 @@ const ProductCard = () => {
               ${e.price}
             </span>
             <a
-              onClick={() => {handleData()}}
+              onClick={() => {handleData(e)}}
               href="#"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >

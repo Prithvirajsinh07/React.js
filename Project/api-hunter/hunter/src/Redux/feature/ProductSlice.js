@@ -6,22 +6,22 @@ export const fetchCard = createAsyncThunk('card/fetchCard', async () => {
   const response = await axios.get('http://localhost:5000/products');
   return response.data;
 });
+export const cartCard = createAsyncThunk('card/cartCard', async () => {
+  const response = await axios.get('http://localhost:5000/cart');
+  return response.data;
+});
 
 // Define the product slice
 const productSlice = createSlice({
   name: 'product',
   initialState: {
     cart: [],
+    addCart :[]
   },
   reducers: {
-    // Action for incrementing or decrementing (ensure you have a value if needed)
-    incremented: state => {
-      // You need to define 'value' in the initialState if you want to increment
-      // state.value += 1;
-    },
-    decremented: state => {
-      // state.value -= 1;
-    },
+    AddCart: (state , action) => {
+   state.addCart = state.cart.map((e ,i)=> i === action.payload  ? cart[action.payload] : null )
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCard.fulfilled, (state, action) => {
@@ -32,7 +32,7 @@ const productSlice = createSlice({
 });
 
 // Export the actions
-export const { incremented, decremented } = productSlice.actions;
+export const { AddCart } = productSlice.actions;
 
 // Export the reducer
 export default productSlice.reducer;
